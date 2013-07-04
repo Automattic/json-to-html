@@ -13,7 +13,9 @@ var obj = {
   related: [
     { id: 'iwWby24aqasd', title: 'Nikon D7100 ISO performance' },
     { id: 'iwW123132sse', title: 'Nikon D7100 dynamic range' }
-  ]
+  ],
+  something: undefined,
+  somethingElse: undefined
 };
 
 console.log('<pre>' + html(obj) + '</pre>');

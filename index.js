@@ -85,14 +85,23 @@ function html(obj, indents) {
   ++indents;
   buf += keys.map(function(key){
     var val = obj[key];
+    if (undefined === val) return;
     key = '"' + key + '"';
     key = span('string key', key);
     return indent() + key + ': ' + html(val, indents);
-  }).join(',\n');
+  }).filter(blank).join(',\n');
   --indents;
 
   if (len) buf += '\n' + indent();
   buf += '}';
 
   return buf;
+}
+
+/**
+ * Filter blanks.
+ */
+
+function blank(val) {
+  return undefined !== val;
 }
