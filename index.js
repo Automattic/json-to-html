@@ -61,6 +61,10 @@ function html(obj, indents) {
     return span('boolean', obj);
   }
 
+  if (obj instanceof Date) {
+    return span('string', obj.toISOString());
+  }
+
   if (null === obj) {
     return span('null', 'null');
   }
