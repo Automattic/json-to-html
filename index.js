@@ -61,10 +61,6 @@ function html(obj, indents) {
     return span('boolean', obj);
   }
 
-  if (obj instanceof Date) {
-    return span('string', obj.toISOString());
-  }
-
   if (null === obj) {
     return span('null', 'null');
   }
@@ -79,6 +75,10 @@ function html(obj, indents) {
     --indents;
     buf += '\n' + indent() + ']';
     return buf;
+  }
+
+  if ('[object Object]' != Object.prototype.toString.call(obj)) {
+    return html(obj.toJSON(), indents);
   }
 
   var buf = '{';
